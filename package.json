@@ -5,6 +5,7 @@
     "ng": "ng",
     "start": "ng serve",
     "build": "ng build",
+    "build:openid": "ng build --base-href /openid-rp/",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
     "serve:ssr:openid-rp": "node dist/openid-rp/server/server.mjs"
@@ -23,6 +24,7 @@
     "@angular/ssr": "^17.0.10",
     "express": "^4.18.2",
     "rxjs": "~7.8.0",
+    "tailwindcss": "^3.4.1",
     "tslib": "^2.3.0",
     "zone.js": "~0.14.2"
   },
