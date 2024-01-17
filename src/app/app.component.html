@@ -12,10 +12,17 @@
 <div>
   <div id="debug-view" class="flex justify-center">
     <div class="container py-8 max-w-screen-lg flex flex-col gap-y-5">
-      <h1 class="text-5xl text-green-500 flex gap-x-3">
-        <i class="material-symbols-outlined text-5xl">check_circle</i>
-        <b>Success!</b>
-      </h1>
+      @if(queryParamList.length > 0) {
+        <h1 class="text-5xl text-green-500 flex gap-x-3">
+          <i class="material-symbols-outlined text-5xl">check_circle</i>
+          <b>Success!</b>
+        </h1>
+      } @else {
+        <h1 class="text-5xl text-red-500 flex gap-x-3">
+          <i class="material-symbols-outlined text-5xl">cancel</i>
+          <b>Error!</b>
+        </h1>
+      }
 
       @if (codeQuery) {
         <div id="card-1" class="flex flex-col shadow-xl text-xl text-white">
@@ -28,16 +35,18 @@
         </div>
       }
 
-      <div id="card-2" class="flex flex-col shadow-xl text-xl text-white">
-        <div class="bg-gray-500 py-3 px-5 rounded-t-xl">
-          Query Values
+      @if (queryParamList.length > 0) {
+        <div id="card-2" class="flex flex-col shadow-xl text-xl text-white">
+          <div class="bg-gray-500 py-3 px-5 rounded-t-xl">
+            Query Values
+          </div>
+          <div class="bg-gray-800 p-5 leading-tight tracking-tight">
+            @for (item of queryParamList; track item.key) {
+              <div>{{ item.key }}=<span class="text-blue-400">{{ item.value }}</span></div>
+            }
+          </div>
         </div>
-        <div class="bg-gray-800 p-5 leading-tight tracking-tight">
-          @for (item of queryParamList; track item.key) {
-            <div>{{ item.key }}=<span class="text-blue-400">{{ item.value }}</span></div>
-          }
-        </div>
-      </div>
+      }
     </div>
   </div>
 </div>
