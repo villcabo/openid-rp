@@ -12,11 +12,19 @@
 <div>
   <div id="debug-view" class="flex justify-center">
     <div class="container py-8 max-w-screen-lg flex flex-col gap-y-5">
-      @if(queryParamList.length > 0) {
-        <h1 class="text-5xl text-green-500 flex gap-x-3">
-          <i class="material-symbols-outlined text-5xl">check_circle</i>
-          <b>Success!</b>
-        </h1>
+      @if (queryParamList.length > 0) {
+        <div class="flex">
+          <h1 class="text-5xl text-green-500 flex gap-x-3 w-1/2">
+            <i class="material-symbols-outlined text-5xl">check_circle</i>
+            <b>Success!</b>
+          </h1>
+          <div class="w-1/2 text-right">
+            <button type="button" (click)="onLogout()"
+                    class="text-blue-700 text-base inline-flex items-center gap-x-2 border-2 border-blue-700 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg px-6 py-3.5 text-center me-2 mb-2">
+              <i class="material-symbols-outlined">logout</i> Logout
+            </button>
+          </div>
+        </div>
       } @else {
         <h1 class="text-5xl text-red-500 flex gap-x-3">
           <i class="material-symbols-outlined text-5xl">cancel</i>
