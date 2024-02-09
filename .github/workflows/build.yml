@@ -20,11 +20,11 @@ jobs:
 
     steps:
     - id: checkout_repo
-    - uses: actions/checkout@v3
+      uses: actions/checkout@v3
 
     - id: build_with_node
     - name: Use Node.js ${{ matrix.node-version }}
-    - uses: actions/setup-node@v3
+      uses: actions/setup-node@v3
       with:
         node-version: ${{ matrix.node-version }}
         cache: 'npm'
@@ -33,7 +33,7 @@ jobs:
 
     - id: upload_argetifacts
     - name: Upload artifacts
-    - uses: actions/upload-artifact@v2
+      uses: actions/upload-artifact@v2
       with:
         name: compiled-app
         path: ./dist/openid-rp/browser
