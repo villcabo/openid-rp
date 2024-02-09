@@ -29,10 +29,4 @@ jobs:
     - run: npm ci
     - run: npm run build:openid --if-present
     - run: npm test
-
-    - uses: actions/upload-artifact@v2
-    - name: Upload Artifact
-      with:
-        name: compiled-app
-        path: ./dist/openid-rp/browser
     
