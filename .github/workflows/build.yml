@@ -16,11 +16,13 @@ jobs:
 
     strategy:
       matrix:
-        node-version: [14.x, 16.x, 18.x]
-        # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
+        node-version: [18.x]
 
     steps:
+    - id: checkout_repo
     - uses: actions/checkout@v3
+
+    - id: build_with_node
     - name: Use Node.js ${{ matrix.node-version }}
       uses: actions/setup-node@v3
       with:
@@ -28,5 +30,11 @@ jobs:
         cache: 'npm'
     - run: npm install
     - run: npm run build:openid --if-present
-    
+
+    - id: upload_argetifacts
+    - name: Upload artifacts
+      uses: actions/upload-artifact@v2
+      with:
+        name: compiled-app
+        path: ./dist/openid-rp/browser
     
